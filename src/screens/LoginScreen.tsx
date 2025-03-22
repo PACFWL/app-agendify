@@ -3,6 +3,7 @@ import { View, TextInput, Button, Text, Alert } from "react-native";
 import { AuthContext } from "../contexts/AuthContext";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes/Routes";
+import styles from "../styles/LoginScreenStyles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
@@ -13,7 +14,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
   useEffect(() => {
     if (auth?.user) {
-      navigation.reset({ index: 0, routes: [{ name: "Home" }] }); 
+      navigation.reset({ index: 0, routes: [{ name: "Home" }] });
     }
   }, [auth?.user]);
 
@@ -28,13 +29,33 @@ const LoginScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <View>
-      <Text>Email:</Text>
-      <TextInput value={email} onChangeText={setEmail} />
-      <Text>Senha:</Text>
-      <TextInput secureTextEntry value={password} onChangeText={setPassword} />
-      <Button title="Login" onPress={handleLogin} />
-      <Text onPress={() => navigation.navigate("Register")}>Criar conta</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Login</Text>
+
+      <Text style={styles.label}>Email:</Text>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}
+        placeholder="Digite seu email"
+      />
+
+      <Text style={styles.label}>Senha:</Text>
+      <TextInput
+        style={styles.input}
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Digite sua senha"
+      />
+
+      <View style={styles.button}>
+        <Button title="Login" onPress={handleLogin} color="#007BFF" />
+      </View>
+
+      <Text style={styles.link} onPress={() => navigation.navigate("Register")}>
+        Criar conta
+      </Text>
     </View>
   );
 };
