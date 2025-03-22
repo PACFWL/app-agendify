@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen";
+import { View, ActivityIndicator } from "react-native";
 
 export type RootStackParamList = {
   Login: undefined;
@@ -16,13 +17,17 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Routes = () => {
   const auth = useContext(AuthContext);
 
-  if (!auth) {
-    return null; 
+  if (auth === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#6200ee" />
+      </View>
+    );
   }
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {auth?.user ? (
+      {auth.user ? (
         <Stack.Screen name="Home" component={HomeScreen} />
       ) : (
         <>

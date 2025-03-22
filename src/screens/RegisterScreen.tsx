@@ -10,10 +10,11 @@ const RegisterScreen = ({ navigation }: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   const handleRegister = async () => {
     try {
-      await register(name, email, password, "user"); 
+      await register(name, email, password, role); 
       Alert.alert("Sucesso", "Cadastro realizado com sucesso!");
       navigation.navigate("Login");
     } catch (error) {
@@ -29,6 +30,8 @@ const RegisterScreen = ({ navigation }: Props) => {
       <TextInput value={email} onChangeText={setEmail} />
       <Text>Senha:</Text>
       <TextInput secureTextEntry value={password} onChangeText={setPassword} />
+      <Text>Role:</Text>
+      <TextInput value={role} onChangeText={setRole} />
       <Button title="Registrar" onPress={handleRegister} />
       <Text onPress={() => navigation.navigate("Login")}>Já tem uma conta? Faça login</Text>
     </View>

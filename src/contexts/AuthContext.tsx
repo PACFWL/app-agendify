@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { login } from "../api/auth"; 
+import { login } from "../api/auth";
 
 type AuthContextType = {
   user: { token: string } | null;
@@ -9,9 +9,7 @@ type AuthContextType = {
   signOut: () => Promise<void>;
 };
 
-
 export const AuthContext = createContext<AuthContextType | null>(null);
-
 
 type AuthProviderProps = {
   children: ReactNode;
@@ -19,20 +17,14 @@ type AuthProviderProps = {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<{ token: string } | null>(null);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadUser = async () => {
-      try {
-        const token = await AsyncStorage.getItem("token");
-        if (token) setUser({ token });
-      } catch (error) {
-        console.error("Erro ao carregar o token:", error);
-      } finally {
-        setIsLoading(false); 
-      }
+      const token = await AsyncStorage.getItem("token");
+      if (token) setUser({ token });
+      setLoading(false);
     };
-
     loadUser();
   }, []);
 
@@ -47,8 +39,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setUser(null);
   };
 
-  
-  if (isLoading) {
+  if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#6200ee" />
