@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
 import { View, Text, Button, Alert } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"; 
+import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../contexts/AuthContext";
-import styles from "../styles/HomeScreenStyles"
+import { RootStackParamList } from "../routes/Routes"; 
+import styles from "../styles/HomeScreenStyles";
+
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList, "Home">;
 
 const HomeScreen = () => {
   const auth = useContext(AuthContext);
+  const navigation = useNavigation<NavigationProps>(); 
 
   const handleSignOut = async () => {
     if (!auth) {
@@ -18,8 +25,13 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Bem-vindo à Home!</Text>
+
       <View style={styles.button}>
-      <Button title="Sair" onPress={handleSignOut} />
+        <Button title="Ver Eventos" onPress={() => navigation.navigate("Events")} />
+      </View>
+
+      <View style={styles.button}>
+        <Button title="Sair" onPress={handleSignOut} />
       </View>
     </View>
   );

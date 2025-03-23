@@ -1,0 +1,78 @@
+import React, { useEffect, useState, useContext } from "react";
+import { View, Text, FlatList, Button, ActivityIndicator, Alert } from "react-native";
+import { AuthContext } from "../contexts/AuthContext";
+import { getAllEvents } from "../api/event";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../routes/Routes";
+import styles from "../styles/EventScreenStyles";
+
+type Props = NativeStackScreenProps<RootStackParamList, "Events">;
+
+type Event = {
+  id: string;
+  name: string;
+  day: string;
+  startTime: string;
+  endTime: string;
+  theme: string;
+  targetAudience: string;
+  mode: string;
+  environment: string;
+  organizer: string;
+};
+
+const EventScreen = ({ navigation }: Props) => {
+  const auth = useContext(AuthContext);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      if (!auth?.user) return;
+
+      try {
+        const data = await getAllEvents(auth.user.token);
+        setEvents(data);
+      } catch (error) {
+        Alert.alert("Erro", "Erro ao carregar eventos.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, [auth]);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#6200ee" />
+        <Text>Carregando eventos...</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Eventos</Text>
+      <FlatList
+        data={events}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.eventCard}>
+            <Text style={styles.eventName}>{item.name}</Text>
+            <Text>{`Data: ${item.day} - ${item.startTime} às ${item.endTime}`}</Text>
+            <Text>{`Tema: ${item.theme}`}</Text>
+            <Text>{`Organizador: ${item.organizer}`}</Text>
+            <Button
+              title="Detalhes"
+              onPress={() => navigation.navigate("EventDetails", { eventId: item.id })}
+            />
+          </View>
+        )}
+      />
+    </View>
+  );
+};
+
+export default EventScreen;

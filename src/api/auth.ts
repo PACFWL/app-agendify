@@ -1,7 +1,7 @@
 import { API_URL } from "@env"; 
 
 export const login = async (email: string, password: string) => {
-  const response = await fetch(`${API_URL}/login`, {
+  const response = await fetch(`${API_URL}/api/users/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -12,7 +12,7 @@ export const login = async (email: string, password: string) => {
 };
 
 export const register = async (name: string, email: string, password: string, role: string) => {
-  const response = await fetch(`${API_URL}/register`, {
+  const response = await fetch(`${API_URL}/api/users/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password, role }),
