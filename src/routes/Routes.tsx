@@ -6,7 +6,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
 import EventScreen from "../screens/EventScreen";
-//import EventDetailsScreen from "../screens/EventDetailsScreen";
+import EventDetailsScreen from "../screens/EventDetailsScreen";
 //import EventFormScreen from "../screens/EventFormScreen";
 
 export type RootStackParamList = {
@@ -42,7 +42,8 @@ const Routes = () => {
         <>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Events" component={EventScreen} />
-   
+          <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
+          
         </>
       ) : (
         <>
@@ -55,5 +56,4 @@ const Routes = () => {
 };
 
 export default Routes;
-//       <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
 //<Stack.Screen name="EventForm" component={EventFormScreen} />

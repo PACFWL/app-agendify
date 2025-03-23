@@ -20,6 +20,28 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 20,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  detail: {
+    fontSize: 14,
+    color: '#444',
+    marginBottom: 5,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#222',
+    marginBottom: 5,
+  },
 });
 
 export default styles;
