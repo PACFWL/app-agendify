@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { View, Text, FlatList, Button, ActivityIndicator, Alert } from "react-native";
 import { AuthContext } from "../contexts/AuthContext";
 import { getAllEvents } from "../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes/Routes";
+import { useFocusEffect } from "@react-navigation/native";
 import styles from "../styles/EventScreenStyles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Events">;
@@ -26,22 +27,25 @@ const EventScreen = ({ navigation }: Props) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      if (!auth?.user) return;
+  const fetchEvents = async () => {
+    if (!auth?.user) return;
 
-      try {
-        const data = await getAllEvents(auth.user.token);
-        setEvents(data);
-      } catch (error) {
-        Alert.alert("Erro", "Erro ao carregar eventos.");
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      setLoading(true);
+      const data = await getAllEvents(auth.user.token);
+      setEvents(data);
+    } catch (error) {
+      Alert.alert("Erro", "Erro ao carregar eventos.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchEvents();
-  }, [auth]);
+  useFocusEffect(
+    useCallback(() => {
+      fetchEvents();
+    }, [auth])
+  );
 
   if (loading) {
     return (
