@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { View, Text, TextInput, Button, Alert, ScrollView } from "react-native";
-import { AuthContext } from "../contexts/AuthContext";
-import { createEvent } from "../api/event";
+import { AuthContext } from "../../contexts/AuthContext";
+import { createEvent } from "../../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../routes/Routes";
-import styles from "../styles/EventFormScreenStyles";
+import { RootStackParamList } from "../../routes/Routes";
+import styles from "../../styles/EventFormScreenStyles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "EventForm">;
 

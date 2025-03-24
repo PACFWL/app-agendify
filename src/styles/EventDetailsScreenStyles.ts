@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 20,
+    gap: 10, 
   },
   loadingContainer: {
     flex: 1,

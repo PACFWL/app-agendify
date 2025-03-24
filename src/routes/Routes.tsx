@@ -5,10 +5,10 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
-import EventScreen from "../screens/EventScreen";
-import EventDetailsScreen from "../screens/EventDetailsScreen";
-import EventFormScreen from "../screens/EventFormScreen";
-import EventEditFormScreen from "../screens/EventEditFormScreen";
+import EventScreen from "../screens/event/EventScreen";
+import EventDetailsScreen from "../screens/event/EventDetailsScreen";
+import EventFormScreen from "../screens/event/EventFormScreen";
+import EventEditFormScreen from "../screens/event/EventEditFormScreen";
 
 export type RootStackParamList = {
   Login: undefined;

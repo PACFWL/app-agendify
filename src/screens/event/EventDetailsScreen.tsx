@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { View, Text, ActivityIndicator, Button, ScrollView, Alert } from "react-native";
-import { AuthContext } from "../contexts/AuthContext";
-import { getEventById, deleteEvent } from "../api/event";
+import { AuthContext } from "../../contexts/AuthContext";
+import { getEventById, deleteEvent } from "../../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../routes/Routes";
-import styles from "../styles/EventDetailsScreenStyles";
+import { RootStackParamList } from "../../routes/Routes";
+import styles from "../../styles/EventDetailsScreenStyles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "EventDetails">;
 
@@ -115,10 +115,10 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
       <Text style={styles.detail}><Text style={styles.label}>Última Modificação:</Text> {new Date(event.lastModifiedAt).toLocaleString()}</Text>
       
       <View style={styles.buttonContainer}>
-      <Button title="Editar Evento" onPress={() => navigation.navigate("EventEditForm", { eventId })} color="orange" />
-        <Button title="Voltar" onPress={() => navigation.goBack()} color="#6200ee" />
-        <Button title="Deletar Evento" onPress={handleDelete} color="red" />
-      </View>
+  <Button title="Editar Evento" onPress={() => navigation.navigate("EventEditForm", { eventId })} color="orange" />
+  <Button title="Voltar" onPress={() => navigation.goBack()} color="#6200ee" />
+  <Button title="Deletar Evento" onPress={handleDelete} color="red" />
+</View>
     </ScrollView>
   );
 };

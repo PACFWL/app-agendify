@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { View, Text, FlatList, Button, ActivityIndicator, Alert } from "react-native";
-import { AuthContext } from "../contexts/AuthContext";
-import { getAllEvents } from "../api/event";
+import { AuthContext } from "../../contexts/AuthContext";
+import { getAllEvents } from "../../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../routes/Routes";
+import { RootStackParamList } from "../../routes/Routes";
 import { useFocusEffect } from "@react-navigation/native";
-import styles from "../styles/EventScreenStyles";
+import styles from "../../styles/EventScreenStyles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Events">;
 
