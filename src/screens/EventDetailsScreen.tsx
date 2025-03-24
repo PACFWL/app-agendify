@@ -25,7 +25,7 @@ type Event = {
   teachingStrategy: string;
   authors: string[];
   disciplinaryLink: string;
-  location: { name: string; floor: { description: string } };
+  location: { name: string; floor: string };
   observation: string;
   status: string;
   priority: string;
@@ -90,7 +90,7 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
       <Text style={styles.detail}><Text style={styles.label}>Estratégia de Ensino:</Text> {event.teachingStrategy}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Autores:</Text> {event.authors.join(", ")}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Vínculo Disciplinar:</Text> {event.disciplinaryLink}</Text>
-      <Text style={styles.detail}><Text style={styles.label}>Localização:</Text>   {event.location.name} - {event.location.floor.description}</Text>
+      <Text style={styles.detail}><Text style={styles.label}>Localização:</Text> {event.location.name} - {event.location.floor}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Observação:</Text> {event.observation}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Status:</Text> {event.status}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Prioridade:</Text> {event.priority}</Text>
@@ -106,4 +106,3 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
 };
 
 export default EventDetailsScreen;
- // <Text style={styles.detail}><Text style={styles.label}>Localização:</Text> {event.location}</Text>
