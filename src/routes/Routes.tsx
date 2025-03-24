@@ -7,7 +7,6 @@ import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
 import EventScreen from "../screens/EventScreen";
 import EventDetailsScreen from "../screens/EventDetailsScreen";
-//import EventFormScreen from "../screens/EventFormScreen";
 
 export type RootStackParamList = {
   Login: undefined;
@@ -56,4 +55,5 @@ const Routes = () => {
 };
 
 export default Routes;
+//import EventFormScreen from "../screens/EventFormScreen";
 //<Stack.Screen name="EventForm" component={EventFormScreen} />

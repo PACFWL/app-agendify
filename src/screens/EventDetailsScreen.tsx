@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { View, Text, ActivityIndicator, Button, ScrollView, Alert } from "react-native";
 import { AuthContext } from "../contexts/AuthContext";
-import { getEventById } from "../api/event";
+import { getEventById, deleteEvent } from "../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../routes/Routes";
 import styles from "../styles/EventDetailsScreenStyles";
@@ -57,6 +57,22 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
     fetchEvent();
   }, [auth, eventId]);
 
+  const handleDelete = async () => {
+    if (!auth?.user) {
+      Alert.alert("Erro", "Usuário não autenticado.");
+      return;
+    }
+
+    try {
+      await deleteEvent(auth.user.token, eventId);
+      Alert.alert("Sucesso", "Evento deletado com sucesso!", [
+        { text: "OK", onPress: () => navigation.goBack() },
+      ]);
+    } catch (error) {
+      Alert.alert("Erro", "Erro ao deletar evento.");
+    }
+  };
+
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
@@ -100,6 +116,7 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
 
       <View style={styles.buttonContainer}>
         <Button title="Voltar" onPress={() => navigation.goBack()} color="#6200ee" />
+        <Button title="Deletar Evento" onPress={handleDelete} color="red" />
       </View>
     </ScrollView>
   );
