@@ -75,6 +75,9 @@ const EventScreen = ({ navigation }: Props) => {
           </View>
         )}
       />
+        <Button
+              title="Criar um Evento"
+              onPress={() => navigation.navigate("EventForm")}/>
     </View>
   );
 };

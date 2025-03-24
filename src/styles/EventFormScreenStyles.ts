@@ -4,25 +4,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fff",
   },
-  label: {
-    fontSize: 18,
+  title: {
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 5,
-    color: "#6200ee",
+    marginBottom: 20,
+    textAlign: "center",
   },
   input: {
-    height: 40,
-    borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 15,
-    backgroundColor: "#f9f9f9",
-  },
-  button: {
-    marginTop: 20,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
   },
 });
 

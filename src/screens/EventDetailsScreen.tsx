@@ -113,8 +113,9 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
       <Text style={styles.detail}><Text style={styles.label}>Duração da Limpeza:</Text> {event.cleanupDuration}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Criado em:</Text> {new Date(event.createdAt).toLocaleString()}</Text>
       <Text style={styles.detail}><Text style={styles.label}>Última Modificação:</Text> {new Date(event.lastModifiedAt).toLocaleString()}</Text>
-
+      
       <View style={styles.buttonContainer}>
+      <Button title="Editar Evento" onPress={() => navigation.navigate("EventEditForm", { eventId })} color="orange" />
         <Button title="Voltar" onPress={() => navigation.goBack()} color="#6200ee" />
         <Button title="Deletar Evento" onPress={handleDelete} color="red" />
       </View>
