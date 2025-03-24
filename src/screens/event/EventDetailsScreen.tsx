@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { View, Text, ActivityIndicator, Button, ScrollView, Alert } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useFocusEffect } from "@react-navigation/native";
 import { getEventById, deleteEvent } from "../../api/event";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../routes/Routes";
@@ -40,22 +41,24 @@ const EventDetailsScreen = ({ route, navigation }: Props) => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchEvent = async () => {
-      if (!auth?.user) return;
-
-      try {
-        const data = await getEventById(auth.user.token, eventId);
-        setEvent(data);
-      } catch (error) {
-        Alert.alert("Erro", "Erro ao carregar detalhes do evento.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvent();
-  }, [auth, eventId]);
+  useFocusEffect(
+    useCallback(() => {
+      const fetchEvent = async () => {
+        if (!auth?.user) return;
+  
+        try {
+          const data = await getEventById(auth.user.token, eventId);
+          setEvent(data);
+        } catch (error) {
+          Alert.alert("Erro", "Erro ao carregar detalhes do evento.");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchEvent();
+    }, [auth, eventId])
+  );
 
   const handleDelete = async () => {
     if (!auth?.user) {
