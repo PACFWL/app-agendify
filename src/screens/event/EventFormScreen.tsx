@@ -64,34 +64,77 @@ const EventFormScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 20 }}>
+
       <Text style={styles.title}>Criar Novo Evento</Text>
-
+  
+      <Text style={styles.label}>Nome:</Text>
       <TextInput style={styles.input} placeholder="Nome" onChangeText={(text) => handleChange("name", text)} />
-      <TextInput style={styles.input} placeholder="Data (YYYY-MM-DD)" onChangeText={(text) => handleChange("day", text)} />
-      <TextInput style={styles.input} placeholder="Horário de Início (HH:MM)" onChangeText={(text) => handleChange("startTime", text)} />
-      <TextInput style={styles.input} placeholder="Horário de Término (HH:MM)" onChangeText={(text) => handleChange("endTime", text)} />
+  
+      <Text style={styles.label}>Data (YYYY-MM-DD):</Text>
+      <TextInput style={styles.input} placeholder="Data" onChangeText={(text) => handleChange("day", text)} />
+  
+      <Text style={styles.label}>Horário de Início (HH:MM):</Text>
+      <TextInput style={styles.input} placeholder="Horário de Início" onChangeText={(text) => handleChange("startTime", text)} />
+  
+      <Text style={styles.label}>Horário de Término (HH:MM):</Text>
+      <TextInput style={styles.input} placeholder="Horário de Término" onChangeText={(text) => handleChange("endTime", text)} />
+  
+      <Text style={styles.label}>Tema:</Text>
       <TextInput style={styles.input} placeholder="Tema" onChangeText={(text) => handleChange("theme", text)} />
+  
+      <Text style={styles.label}>Público-alvo:</Text>
       <TextInput style={styles.input} placeholder="Público-alvo" onChangeText={(text) => handleChange("targetAudience", text)} />
+  
+      <Text style={styles.label}>Modalidade:</Text>
       <TextInput style={styles.input} placeholder="Modalidade" onChangeText={(text) => handleChange("mode", text)} />
+  
+      <Text style={styles.label}>Ambiente:</Text>
       <TextInput style={styles.input} placeholder="Ambiente" onChangeText={(text) => handleChange("environment", text)} />
+  
+      <Text style={styles.label}>Organizador:</Text>
       <TextInput style={styles.input} placeholder="Organizador" onChangeText={(text) => handleChange("organizer", text)} />
-      <TextInput style={styles.input} placeholder="Recursos (separados por vírgula)" onChangeText={(text) => handleChange("resourcesDescription", text)} />
+  
+      <Text style={styles.label}>Recursos (separados por vírgula):</Text>
+      <TextInput style={styles.input} placeholder="Recursos" onChangeText={(text) => handleChange("resourcesDescription", text)} />
+  
+      <Text style={styles.label}>Forma de Divulgação:</Text>
       <TextInput style={styles.input} placeholder="Forma de Divulgação" onChangeText={(text) => handleChange("disclosureMethod", text)} />
-      <TextInput style={styles.input} placeholder="Disciplinas (separadas por vírgula)" onChangeText={(text) => handleChange("relatedSubjects", text)} />
+  
+      <Text style={styles.label}>Disciplinas Relacionadas (separadas por vírgula):</Text>
+      <TextInput style={styles.input} placeholder="Disciplinas" onChangeText={(text) => handleChange("relatedSubjects", text)} />
+  
+      <Text style={styles.label}>Estratégia de Ensino:</Text>
       <TextInput style={styles.input} placeholder="Estratégia de Ensino" onChangeText={(text) => handleChange("teachingStrategy", text)} />
-      <TextInput style={styles.input} placeholder="Autores (separados por vírgula)" onChangeText={(text) => handleChange("authors", text)} />
+  
+      <Text style={styles.label}>Autores (separados por vírgula):</Text>
+      <TextInput style={styles.input} placeholder="Autores" onChangeText={(text) => handleChange("authors", text)} />
+  
+      <Text style={styles.label}>Vínculo Disciplinar:</Text>
       <TextInput style={styles.input} placeholder="Vínculo Disciplinar" onChangeText={(text) => handleChange("disciplinaryLink", text)} />
-      <TextInput style={styles.input} placeholder="Local do Evento" onChangeText={(text) => handleChange("locationName", text)} />
-      <TextInput style={styles.input} placeholder="Andar do Local" onChangeText={(text) => handleChange("locationFloor", text)} />
-      <TextInput style={styles.input} placeholder="Status do Evento" onChangeText={(text) => handleChange("status", text)} />
+  
+      <Text style={styles.label}>Local do Evento:</Text>
+      <TextInput style={styles.input} placeholder="Local" onChangeText={(text) => handleChange("locationName", text)} />
+  
+      <Text style={styles.label}>Andar do Local:</Text>
+      <TextInput style={styles.input} placeholder="Andar" onChangeText={(text) => handleChange("locationFloor", text)} />
+  
+      <Text style={styles.label}>Status do Evento:</Text>
+      <TextInput style={styles.input} placeholder="Status" onChangeText={(text) => handleChange("status", text)} />
+  
+      <Text style={styles.label}>Prioridade:</Text>
       <TextInput style={styles.input} placeholder="Prioridade" onChangeText={(text) => handleChange("priority", text)} />
-      <TextInput style={styles.input} placeholder="Duração da Limpeza (min)" onChangeText={(text) => handleChange("cleanupDuration", text)} />
+  
+      <Text style={styles.label}>Duração da Limpeza (minutos):</Text>
+      <TextInput style={styles.input} placeholder="Duração da Limpeza" onChangeText={(text) => handleChange("cleanupDuration", text)} />
+  
+      <Text style={styles.label}>Observação:</Text>
       <TextInput style={styles.input} placeholder="Observação" onChangeText={(text) => handleChange("observation", text)} />
-
+  
       <Button title="Criar Evento" onPress={handleSubmit} />
     </ScrollView>
   );
+  
 };
 
 export default EventFormScreen;

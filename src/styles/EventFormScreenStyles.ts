@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
   },
+  label: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: "#333",
+  },
   
 });
 
