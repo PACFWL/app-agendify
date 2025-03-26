@@ -23,7 +23,37 @@ export const createEvent = async (token: string, eventData: any) => {
     body: JSON.stringify(eventData),
   });
 
-  if (!response.ok) throw new Error("Erro ao criar evento");
+  const data = await response.json();
+
+  if (!response.ok) {
+    if (response.status === 409) {
+     
+      return { conflict: true, conflictData: data };
+    }
+    throw new Error("Erro ao criar evento");
+  }
+
+  return data;
+};
+
+export const resolveEventConflict = async (
+  token: string,
+  existingEventId: string,
+  newEventData: any
+) => {
+  const response = await fetch(
+    `${API_URL}/api/events/resolve/${existingEventId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newEventData),
+    }
+  );
+
+  if (!response.ok) throw new Error("Erro ao resolver conflito de evento");
   return response.json();
 };
 
