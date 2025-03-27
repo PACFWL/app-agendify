@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation }: Props) => {
       <Text style={styles.label}>Senha:</Text>
       <TextInput
         style={styles.input}
-        secureTextEntry
+        secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
         placeholder="Digite sua senha"

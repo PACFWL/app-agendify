@@ -27,6 +27,7 @@ const LoginScreenStyles = StyleSheet.create({
     paddingHorizontal: 12,
     backgroundColor: "#FFF",
     marginBottom: 16,
+    color: '#000',
   },
   button: {
     marginTop: 16,

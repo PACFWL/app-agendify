@@ -102,7 +102,7 @@ const EventEditFormScreen = ({ route, navigation }: Props) => {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 20 }}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 30 }}>
       <Text style={styles.title}>Editar Evento</Text>
 
       <Text style={styles.label}>Nome:</Text>

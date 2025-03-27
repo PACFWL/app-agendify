@@ -9,6 +9,7 @@ import EventScreen from "../screens/event/EventScreen";
 import EventDetailsScreen from "../screens/event/EventDetailsScreen";
 import EventFormScreen from "../screens/event/EventFormScreen";
 import EventEditFormScreen from "../screens/event/EventEditFormScreen";
+import CalendarScreen from "../screens/CalendarScreen";
 
 export type RootStackParamList = {
   Login: undefined;
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   EventDetails: { eventId: string };
   EventForm: { event?: any } | undefined;
   EventEditForm: { eventId: string };
+  Calendar: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -47,6 +49,7 @@ const Routes = () => {
           <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
           <Stack.Screen name="EventForm" component={EventFormScreen} />
           <Stack.Screen name="EventEditForm" component={EventEditFormScreen} />
+          <Stack.Screen name="Calendar" component={CalendarScreen} />
         </>
       ) : (
         <>
