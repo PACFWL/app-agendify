@@ -12,6 +12,8 @@ type EventType = {
   day: string; 
   startTime: string;
   endTime: string;
+  mode: string;
+  location: { name: string; floor: string };
 };
 
 const CalendarScreen = () => {
@@ -63,7 +65,7 @@ const CalendarScreen = () => {
         renderItem={({ item }) => (
           <View style={styles.eventCard}>
             <Text style={styles.eventName}>{item.name}</Text>
-            <Text>{`${item.startTime} - ${item.endTime}`}</Text>
+            <Text>{`${item.startTime} - ${item.endTime} - ${item.mode} - ${item.location.name} - ${item.location.floor}`}</Text>
           </View>
         )}
       />
